@@ -1,8 +1,16 @@
 import { Image, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { useFonts } from 'expo-font';
 export default function HomeScreen ({navigation}) {
+  const [fontLoaded] =useFonts({
+    Playball:require('../fonts/Playball-Regular.ttf'),
+    Poppins_Regular:require('../fonts/Poppins-Regular.ttf'),
+    Poppins_Medium:require('../fonts/Poppins-Medium.ttf'),
+    Poppins_SemiBold:require('../fonts/Poppins-SemiBold.ttf'),
+    Poppins_Bold:require('../fonts/Poppins-Bold.ttf'),
+    Poppins_Light:require('../fonts/Poppins-Light.ttf')
+  })
   const backgroundImage = require('../assets/images/b2.jpg');
   const plat1 = require('../assets/images/nouille-saute-poulet-sesame.jpg')
   const plat2 = require('../assets/images/boeuf-bourguignon02.jpg')
@@ -18,7 +26,7 @@ export default function HomeScreen ({navigation}) {
         <Ionicons style={styles.icons} name='menu-outline' size={50} color="white"/>
         <Ionicons style={styles.icons} name='cart-outline' size={50} color="white"/>
         </View>
-        <Text style={styles.title}>MyChoice</Text>
+        <Text style={styles.title}>MyChoice App</Text>
         <Text style={styles.subtitle}>What would you like to eat?</Text>
         <View style={styles.categories}>
           <View style={styles.items}>
@@ -120,15 +128,17 @@ const styles = StyleSheet.create({
     },
     title:{
       color:"#fff",
-      left:130,
+      left:100,
       top:8,
-      fontSize:30
+      fontSize:30,
+      fontFamily:"Playball"
     },
     subtitle:{
       color:"#fff",
       fontSize:24,
       top:23,
-      left:23
+      left:23,
+      fontFamily:"Poppins_Medium"
     },
     categories:{
       flexDirection:'row',
@@ -148,7 +158,8 @@ const styles = StyleSheet.create({
       justifyContent:'center',
     },
     activeinfo:{
-      color:'#fff'
+      color:'#fff',
+      fontFamily:"Poppins_Medium"
     },
     button:{
       backgroundColor:'#fff',
@@ -162,12 +173,14 @@ const styles = StyleSheet.create({
     },
     info:{
       color:'#68130D',
+      fontFamily:"Poppins_Medium"
     },
     Subtitle:{
       color:'#fff',
       fontWeight:'700',
       left:20,
-      top:70
+      top:70,
+      fontFamily:"Poppins_SemiBold"
     },
     Food:{
       flex:1,
@@ -202,14 +215,14 @@ const styles = StyleSheet.create({
        top:205,
        paddingLeft:40,
        fontSize:16,
-       fontWeight:'600',
-       alignItems:'center'
+       alignItems:'center',
+       fontFamily:"Poppins_Bold"
     },
     SubtitleSection2:{
       color:'#fff',
-      fontWeight:'700',
       left:20,
-      top:30
+      top:30,
+      fontFamily:"Poppins_SemiBold"
     },
     FoodSection2:{
       flex:1,
@@ -244,8 +257,8 @@ const styles = StyleSheet.create({
        top:205,
        paddingLeft:40,
        fontSize:16,
-       fontWeight:'600',
-       alignItems:'center'
+       alignItems:'center',
+       fontFamily:"Poppins_SemiBold"
     }
   
   });

@@ -3,17 +3,26 @@ import React from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Image } from 'react-native';
+import { useFonts } from 'expo-font';
 const plat1 = require('../assets/images/nouille-saute-poulet-sesame.jpg')
 
 const SeePlusScreen = () => {
+  const [fontLoaded] =useFonts({
+    Playball:require('../fonts/Playball-Regular.ttf'),
+    Poppins_Regular:require('../fonts/Poppins-Regular.ttf'),
+    Poppins_Medium:require('../fonts/Poppins-Medium.ttf'),
+    Poppins_SemiBold:require('../fonts/Poppins-SemiBold.ttf'),
+    Poppins_Bold:require('../fonts/Poppins-Bold.ttf'),
+    Poppins_Light:require('../fonts/Poppins-Light.ttf')
+  })
   return (
     <View style={styles.container}>
           <View style={styles.header}>
         <Ionicons style={styles.icons} name='menu-outline' size={50} color="black"/>
         <Ionicons style={styles.icons} name='cart-outline' size={50} color="black"/>
         </View>
-        <Text style={styles.title}>MyChoice</Text>
-        <Text style={styles.subtitle}>nouille saute poulet sesame</Text>
+        <Text style={styles.title}>MyChoice App</Text>
+        <Text style={styles.subtitle}>Nouille saute poulet sesame</Text>
         <Image style={styles.image} source={plat1}/>
         <View>
             <Text style={styles.Subtitle}>Size</Text>
@@ -65,7 +74,7 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     header:{
-        top:-110,
+        top:-100,
         flexDirection:'row',
         zIndex:1,
         borderBottomWidth:1,
@@ -78,29 +87,31 @@ const styles = StyleSheet.create({
       title:{
         color:"#000",
         left:4,
-        top:-150,
-        fontSize:30
+        top:-140,
+        fontSize:30,
+        fontFamily:"Playball"
       },
       subtitle:{
         color:"#000",
         fontSize:24,
-        top:-140,
-        left:2
+        top:-120,
+        left:2,
+        fontFamily:"Poppins_SemiBold"
       },
       image:{
         width:340,
         height:190,
         borderRadius:15,
-        bottom:127
+        bottom:100
       },
       Subtitle:{
         fontSize:22,
-        fontWeight:700,
-        bottom:117
+        fontFamily:"Poppins_SemiBold",
+        bottom:90
       },
       quantity:{
         flexDirection:'row',
-        bottom:90
+        bottom:70
       },
       size:{
         flex:1,
@@ -118,8 +129,7 @@ const styles = StyleSheet.create({
       },
       activeSizeItem:{
         color:'#fff',
-        fontSize:22,
-        fontWeight:400,
+        fontFamily:"Poppins_SemiBold",
       },
       Button:{
         backgroundColor:"#fff",
@@ -133,11 +143,12 @@ const styles = StyleSheet.create({
       },
       sizeItem:{
         color:'#68130D',
+        fontFamily:"Poppins_SemiBold",
       },
       Subtitle2:{
         fontSize:22,
-        fontWeight:700,
-        bottom:30
+        bottom:30,
+        fontFamily:"Poppins_SemiBold",
       },
       quality2:{
         flexDirection:'row',
@@ -155,7 +166,7 @@ const styles = StyleSheet.create({
       },
       sizeItem2:{
         fontSize:22,
-        fontWeight:700
+        fontFamily:"Poppins_SemiBold",
       },
       button:{
         backgroundColor:"#68130D",
@@ -169,5 +180,6 @@ const styles = StyleSheet.create({
       submit:{
         color:'#fff',
         fontSize:20,
+        fontFamily:"Poppins_Medium",
       }
 })

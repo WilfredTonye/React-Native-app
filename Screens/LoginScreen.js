@@ -1,7 +1,14 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
-
+import { useFonts } from 'expo-font'
 const LoginScreen = ({navigation}) => {
+  const [fontLoaded] =useFonts({
+    Poppins_Medium:require('../fonts/Poppins-Medium.ttf'),
+    Poppins_Regular:require('../fonts/Poppins-Regular.ttf'),
+    Lato_Light:require('../fonts/Lato-Light.ttf'),
+    Lato_Regular:require('../fonts/Lato-Regular.ttf'),
+    Lato_Bold:require('../fonts/Lato-Bold.ttf')
+  })
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -36,11 +43,12 @@ const styles = StyleSheet.create({
       width:375,
       height:152,
       borderBottomLeftRadius:40,
-      bottom:120
+      bottom:140
     },
     title:{
       color:'#68130D',
       fontSize:25,
+      fontFamily:"Poppins_Medium",
       left:20,
       top:50,
     },
@@ -55,6 +63,7 @@ const styles = StyleSheet.create({
       width:327,
       height:40,
       borderRadius:10,
+      fontFamily:"Lato_Light"
     },
     button:{
       backgroundColor:"#fff",
@@ -67,7 +76,8 @@ const styles = StyleSheet.create({
     },
     submit:{
       color:"#68130D",
-      fontSize:20
+      fontSize:20,
+      fontFamily:"Poppins_Regular"
     },
     linkButton:{
       flexDirection:'row',
@@ -75,6 +85,7 @@ const styles = StyleSheet.create({
     link:{
       color:'#fff',
       paddingLeft:208,
-      bottom:25
+      bottom:25,
+      fontFamily:"Lato_Regular"
     }
   });

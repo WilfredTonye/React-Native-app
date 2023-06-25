@@ -1,9 +1,17 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { ImageBackground } from 'react-native'
+import { useFonts } from 'expo-font'
 const backgroundImage = require('../assets/images/b1.jpg')
 
 const StartScreen = ({navigation}) => {
+  const [fontLoaded] =useFonts({
+    Playball:require('../fonts/Playball-Regular.ttf'),
+    Poppins_Regular:require('../fonts/Poppins-Regular.ttf'),
+    Poppins_Medium:require('../fonts/Poppins-Medium.ttf'),
+    Poppins_SemiBold:require('../fonts/Poppins-SemiBold.ttf'),
+    Poppins_Light:require('../fonts/Poppins-Light.ttf')
+  })
   return (
     <View style={styles.container}>
       <ImageBackground style={styles.image} source={backgroundImage}>
@@ -44,11 +52,13 @@ const styles = StyleSheet.create({
       bottom:150,
       left:9,
       fontSize:25,
+      fontFamily:"Playball",
+      opacity:0.5
     },
     title:{
       color:"white",
       fontSize:35,
-      fontWeight:'700',
+      fontFamily:"Poppins_SemiBold",
       left:40,
     },
     footer:{
@@ -61,7 +71,8 @@ const styles = StyleSheet.create({
     text:{
       left:38,
       top:15,
-      fontWeight:'300'
+      fontFamily:"Poppins_Light",
+      fontSize:15
     },
     button:{
       backgroundColor:"#68130D",
@@ -76,11 +87,13 @@ const styles = StyleSheet.create({
     submit:{
       color:"white",
       fontSize:20,
+      fontFamily:"Poppins_Regular"
     },
     link:{
       left:155,
       top:60,
-      fontWeight:'500'
+      fontFamily:"Poppins_Medium",
+      fontSize:15
     },
     icon:{
       width:37,
