@@ -11,6 +11,7 @@ export default function HomeScreen ({navigation}) {
     Poppins_Bold:require('../fonts/Poppins-Bold.ttf'),
     Poppins_Light:require('../fonts/Poppins-Light.ttf')
   })
+  if (!fontLoaded) return null
   const backgroundImage = require('../assets/images/b2.jpg');
   const plat1 = require('../assets/images/nouille-saute-poulet-sesame.jpg')
   const plat2 = require('../assets/images/boeuf-bourguignon02.jpg')
@@ -23,8 +24,9 @@ export default function HomeScreen ({navigation}) {
       <ImageBackground style={styles.image} source={backgroundImage}>
         <View style={styles.fond}>
         <View style={styles.header}>
-        <Ionicons style={styles.icons} name='menu-outline' size={50} color="white"/>
+          <Pressable onPress={()=> navigation.navigate('Cart')}>
         <Ionicons style={styles.icons} name='cart-outline' size={50} color="white"/>
+        </Pressable>
         </View>
         <Text style={styles.title}>MyChoice App</Text>
         <Text style={styles.subtitle}>What would you like to eat?</Text>
@@ -124,7 +126,7 @@ const styles = StyleSheet.create({
       borderBottomColor:'#fff'
     },
     icons:{
-      paddingRight:270,
+      paddingLeft:300,
     },
     title:{
       color:"#fff",

@@ -1,8 +1,19 @@
-import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
+import { Button, KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { useFonts } from 'expo-font'
+import { Ionicons } from '@expo/vector-icons'
 
 const SignUpScreen = ({navigation}) => {
+  const [fullName, setFullName] = useState('')
+  const [email , setEmail] = useState('')
+  const [phoneNumber , setPhoneNumber] = useState('')
+  const [password , setPasword] = useState('')
+  const [confirmPassword , setConfirmPassword] = useState('')
+
+  const handleSignUp =() => {
+
+  }
+
   const [fontLoaded] =useFonts({
     Poppins_Medium:require('../fonts/Poppins-Medium.ttf'),
     Poppins_Regular:require('../fonts/Poppins-Regular.ttf'),
@@ -10,19 +21,25 @@ const SignUpScreen = ({navigation}) => {
     Lato_Regular:require('../fonts/Lato-Regular.ttf'),
     Lato_Bold:require('../fonts/Lato-Bold.ttf')
   })
+  if (!fontLoaded) return null
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.header}>
+        <Pressable onPress={()=> navigation.navigate('Start')}>
+        <Ionicons style={styles.icon} name='ios-arrow-back' size={40} color="#68130D"/>
+        </Pressable>
         <Text style={styles.title}>Create</Text>
         <Text style={styles.title}>Account</Text>
       </View>
+      
       <View style={styles.form}>
-        <TextInput style={styles.input} placeholder='Full Name' placeholderTextColor="#68130D"/>
-        <TextInput style={styles.input} placeholder='Email' placeholderTextColor="#68130D"/>
-        <TextInput style={styles.input} placeholder='Phone Number' placeholderTextColor="#68130D"/>
-        <TextInput style={styles.input} placeholder='Password' placeholderTextColor="#68130D"secureTextEntry={true} textContentType='newPassword'/>
-        <TextInput style={styles.input} placeholder='Confirm Password' placeholderTextColor="#68130D" secureTextEntry={true}/>
+        <TextInput style={styles.input} placeholder='Full Name' value={fullName} onChangeText={text =>setFullName(text)} placeholderTextColor="#68130D"/>
+        <TextInput style={styles.input} placeholder='Email' value={email} onChangeText={text=> setEmail(text)} placeholderTextColor="#68130D"/>
+        <TextInput style={styles.input} placeholder='Phone Number' value={phoneNumber} onChangeText={text=> setPhoneNumber(text)} placeholderTextColor="#68130D"/>
+        <TextInput style={styles.input} placeholder='Password' value={password} onChangeText={text=> setPasword(text)} placeholderTextColor="#68130D"secureTextEntry={true} textContentType='newPassword'/>
+        <TextInput style={styles.input} placeholder='Confirm Password' value={confirmPassword} onChangeText={text=> setConfirmPassword(text)} placeholderTextColor="#68130D" secureTextEntry={true}/>
       </View>
+      
       <Pressable style={styles.button} onPress={()=> navigation.navigate('Home')}>
         <Text style={styles.submit}>SignUp</Text>
       </Pressable>
@@ -30,7 +47,7 @@ const SignUpScreen = ({navigation}) => {
         <Text style={styles.link}>Already have an account?</Text>
         <Text style={[styles.link, {fontFamily:"Lato_Bold"}]}>Sign in</Text>
       </Pressable>
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -50,11 +67,15 @@ const styles = StyleSheet.create({
       borderBottomLeftRadius:40,
       bottom:100
     },
+    icon:{
+      top:10,
+      left:10
+    },
     title:{
       color:'#68130D',
       fontSize:25,
       left:20,
-      top:50,
+      top:30,
       fontFamily:"Poppins_Medium"
     },
     form:{

@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { ImageBackground } from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFonts } from 'expo-font'
 const backgroundImage = require('../assets/images/b1.jpg')
 
@@ -12,6 +13,7 @@ const StartScreen = ({navigation}) => {
     Poppins_SemiBold:require('../fonts/Poppins-SemiBold.ttf'),
     Poppins_Light:require('../fonts/Poppins-Light.ttf')
   })
+  if (!fontLoaded) return null
   return (
     <View style={styles.container}>
       <ImageBackground style={styles.image} source={backgroundImage}>
@@ -24,6 +26,7 @@ const StartScreen = ({navigation}) => {
             </Pressable>
       <Pressable onPress={()=> navigation.navigate('SignUp')}>
             <Text style={styles.link}>Or Create Account</Text>
+            <Ionicons style={styles.icon} name='ios-arrow-forward' size={20} color="black"/>
             </Pressable>
         </View>
       </ImageBackground>
@@ -96,8 +99,7 @@ const styles = StyleSheet.create({
       fontSize:15
     },
     icon:{
-      width:37,
-      height:0,
       left:305,
+      top:40,
     }
 })

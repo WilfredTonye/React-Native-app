@@ -6,60 +6,43 @@ import { Image } from 'react-native';
 import { useFonts } from 'expo-font';
 const plat1 = require('../assets/images/nouille-saute-poulet-sesame.jpg')
 
-const SeePlusScreen = () => {
+const SeePlusScreen = ({navigation}) => {
   const [fontLoaded] =useFonts({
     Playball:require('../fonts/Playball-Regular.ttf'),
     Poppins_Regular:require('../fonts/Poppins-Regular.ttf'),
     Poppins_Medium:require('../fonts/Poppins-Medium.ttf'),
     Poppins_SemiBold:require('../fonts/Poppins-SemiBold.ttf'),
-    Poppins_Bold:require('../fonts/Poppins-Bold.ttf'),
-    Poppins_Light:require('../fonts/Poppins-Light.ttf')
+    Lato_Light:require('../fonts/Lato-Light.ttf'),
+    Lato_Regular:require('../fonts/Lato-Regular.ttf'),
+    Lato_Bold:require('../fonts/Lato-Bold.ttf')
   })
+  if (!fontLoaded) return null
   return (
     <View style={styles.container}>
           <View style={styles.header}>
-        <Ionicons style={styles.icons} name='menu-outline' size={50} color="black"/>
         <Ionicons style={styles.icons} name='cart-outline' size={50} color="black"/>
         </View>
         <Text style={styles.title}>MyChoice App</Text>
         <Text style={styles.subtitle}>Nouille saute poulet sesame</Text>
         <Image style={styles.image} source={plat1}/>
         <View>
-            <Text style={styles.Subtitle}>Size</Text>
+            <Text style={styles.Subtitle}>Description</Text>
         </View>
-        <View style={styles.quantity}>
-            <View style={styles.size}>
-                <Pressable style={styles.activeButton}>
-                <Text style={styles.activeSizeItem}>S</Text>
-                </Pressable>
-                <Pressable style={styles.Button}>
-                <Text style={styles.sizeItem}>M</Text>
-                </Pressable>
-                <Pressable style={styles.Button}>
-                <Text style={styles.sizeItem}>L</Text>
-                </Pressable>
-            </View>
+        <View style={styles.description}>
+          <Text style={styles.desc}>This channel aims at giving you react native design tutorials that you don't see nowhere on YouTube. 
+At least for free. 
+So make sure you stay tuned for there are 
+more specialcontents coming soon.</Text>
         </View>
-
         <View>
-            <Text style={styles.Subtitle2}>Quantity</Text>
+          <View style={styles.Prices}>
+            <Text style={[styles.price, {fontFamily:"Lato_Light", fontSize:18}]}>Price</Text>
+            <Text style={[styles.price, {fontFamily:"Lato_Medium", fontSize:20,  color:'#68130D'}]}>2.500</Text>
+          </View>
+          <Pressable style={styles.button} onPress={()=> navigation.navigate('Cart')}>
+            <Text style={styles.submit}>Add To Cart</Text>
+          </Pressable>
         </View>
-        <View style={styles.quality2}>
-            <View style={styles.icon}>
-                <Pressable>
-                <FontAwesome name='minus-circle' size={20} style={styles.activeIconItem2}/>
-                </Pressable>
-                <Pressable>
-                <Text style={styles.sizeItem2}>1</Text>
-                </Pressable>
-                <Pressable>
-                <FontAwesome name='plus-circle' size={20} style={styles.activeIconItem2}/>
-                </Pressable>
-            </View>
-        </View>
-        <Pressable style={styles.button}>
-            <Text style={styles.submit}>confirm</Text>
-        </Pressable>
     </View>
   )
 }
@@ -74,27 +57,26 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     header:{
-        top:-100,
+        top:-60,
         flexDirection:'row',
         zIndex:1,
         borderBottomWidth:1,
         borderBottomColor:'#000'
       },
       icons:{
-        paddingRight:140,
-        paddingLeft:135
+        paddingLeft:320
       },
       title:{
         color:"#000",
         left:4,
-        top:-140,
+        top:-100,
         fontSize:30,
         fontFamily:"Playball"
       },
       subtitle:{
         color:"#000",
         fontSize:24,
-        top:-120,
+        top:-70,
         left:2,
         fontFamily:"Poppins_SemiBold"
       },
@@ -102,84 +84,42 @@ const styles = StyleSheet.create({
         width:340,
         height:190,
         borderRadius:15,
-        bottom:100
+        bottom:40,
       },
       Subtitle:{
         fontSize:22,
         fontFamily:"Poppins_SemiBold",
-        bottom:90
+        bottom:-10,
+        right:100
       },
-      quantity:{
+      description:{
         flexDirection:'row',
-        bottom:70
+        bottom:-10,
       },
-      size:{
-        flex:1,
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'space-evenly'
+      desc:{
+        fontFamily:"Lato_Light",
+        fontSize:16,
+        left:19,
+        lineHeight:25,
+        paddingRight:50
       },
-      activeButton:{
-        backgroundColor:'#68130D',
-        width:38,
-        height:38,
-        borderRadius:10,
-        alignItems:'center',
-        justifyContent:'center'
-      },
-      activeSizeItem:{
-        color:'#fff',
-        fontFamily:"Poppins_SemiBold",
-      },
-      Button:{
-        backgroundColor:"#fff",
-        width:38,
-        height:38,
-        borderColor:'#68130D',
-        borderWidth:2,
-        borderRadius:10,
-        alignItems:'center',
-        justifyContent:'center'
-      },
-      sizeItem:{
-        color:'#68130D',
-        fontFamily:"Poppins_SemiBold",
-      },
-      Subtitle2:{
-        fontSize:22,
-        bottom:30,
-        fontFamily:"Poppins_SemiBold",
-      },
-      quality2:{
-        flexDirection:'row',
-        bottom:10
-      },
-      icon:{
-        flex:1,
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'space-evenly',
-        gap:-120
-      },
-      activeIconItem2:{
-        color:"#68130D"
-      },
-      sizeItem2:{
-        fontSize:22,
-        fontFamily:"Poppins_SemiBold",
+      Prices:{
+        right:80,
+        top:70,
       },
       button:{
-        backgroundColor:"#68130D",
-        width:261,
+        backgroundColor:'#68130D',
+        width:165,
         height:40,
         borderRadius:10,
         alignItems:'center',
         justifyContent:'center',
-        top:50
+        left:90,
+        top:30
       },
       submit:{
         color:'#fff',
-        fontSize:20,
         fontFamily:"Poppins_Medium",
+        fontSize:18
       }
 })

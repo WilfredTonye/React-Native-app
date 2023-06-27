@@ -9,6 +9,8 @@ import SignUpScreen from './Screens/SignUpScreen'
 import HomeScreen from './Screens/HomeScreen';
 import { Ionicons } from '@expo/vector-icons';
 import SeePlusScreen from './Screens/SeePlusScreen';
+import SearchScreen from './Screens/SearchScreen';
+import CartScreen from './Screens/CartScreen';
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -21,6 +23,7 @@ function StackNavigation() {
       <Stack.Screen name='Login' component={LoginScreen} options={{headerShown:false,headerStyle:{backgroundColor:"#fff",},headerTintColor:"#68130D"}}/>
       <Stack.Screen name='Home' component={TabsNavigation} options={{headerShown:false,headerStyle:{backgroundColor:"#fff",},headerTintColor:"#68130D"}}/>
       <Stack.Screen name='VoirPlus' component={SeePlusScreen} options={{headerShown:false,headerStyle:{backgroundColor:"#fff",},headerTintColor:"#68130D"}}/>
+      <Stack.Screen name='Cart' component={CartScreen} options={{headerShown:false,headerStyle:{backgroundColor:"#fff",},headerTintColor:"#68130D"}}/>
     </Stack.Navigator>
   );
 }
@@ -33,7 +36,7 @@ function TabsNavigation() {
         let iconName;
         if (route.name === "Home") {
           iconName = focused ? "ios-home": "ios-home-outline"
-        }else if (route.name === "Home") {
+        }else if (route.name === "Search") {
           iconName = focused ? "ios-search": "ios-search-outline"
         }else if (route.name === "Home") {
           iconName = focused ? "ios-heart": "ios-heart-outline"
@@ -45,6 +48,7 @@ function TabsNavigation() {
     })}
     >
       <Tabs.Screen name='Home' component={HomeScreen} options={{headerShown:false,headerStyle:{backgroundColor:"#fff",},headerTintColor:"#68130D"}}/>
+      <Tabs.Screen name='Search' component={SearchScreen} options={{headerShown:false,headerStyle:{backgroundColor:"#fff",},headerTintColor:"#68130D"}}/>
     </Tabs.Navigator>
   );
 }
@@ -53,6 +57,7 @@ export default function App() {
     <NavigationContainer>
       <StackNavigation/>
     </NavigationContainer>
+    
   );
 }
 
